@@ -34,8 +34,9 @@ Options:
     -c,           (Obligatorio) CANT : Cantidad de tarjetas a generar 
   Optional
     -b,           (Opcional)    BIN : Identificador del Banco 
-    -f,           (Opcional)    FILE-BANK : Nombre del archivo con información pública de 
-                            Bancos. Por defecto se usa el archivo binpe.csv
+    -f,           (Opcional)    FILE-BANK : Nombre del archivo con información 
+	                        pública de Bancos. Por defecto se usa 
+							el archivo binpe.csv
 ```
 
 ### Simple usage
@@ -54,7 +55,7 @@ python3 gencard.py -c 2000 -m S
 ```
 4. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
 ```
-python gencard.py -c 1500 -m A -b 110110 
+python gencard.py -c 1500 -m S -b 110110 
 ```
 References
 ---------------
