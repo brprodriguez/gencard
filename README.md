@@ -36,7 +36,7 @@ Options:
     -b,           (Opcional)    BIN : Identificador del Banco 
     -f,           (Opcional)    FILE-BANK : Nombre del archivo con información 
 	                        pública de Bancos. Por defecto se usa 
-					el archivo binpe.csv
+				el archivo binpe.csv
 ```
 
 ### Simple usage
