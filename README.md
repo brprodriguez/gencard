@@ -33,8 +33,9 @@ Options:
     -m,           (Obligatorio) MODO : A -> Aleatorio, S -> Secuencial          
     -c,           (Obligatorio) CANT : Cantidad de tarjetas a generar 
   Optional
-	-b,           (Opcional)    BIN : Identificador del Banco 
-	-f,           (Opcional)    FILE-BANK : Nombre del archivo con información pública de Bancos. Por defecto se usa el archivo binpe.csv
+    -b,        (Opcional)    BIN : Identificador del Banco 
+    -f,        (Opcional)    FILE-BANK : Nombre del archivo con información pública de 
+							 Bancos. Por defecto se usa el archivo binpe.csv
 ```
 
 ### Simple usage
