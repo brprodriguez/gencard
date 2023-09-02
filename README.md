@@ -1,13 +1,13 @@
-# Generador de tarjetas de crédito o débito ficticias
+# Generador de tarjetas de crédito o débito ficticias validadas por el algoritmo de Luhn
 
 ## 📖 Resumen 
 
-- **GenCard.py** es un herramienta basada en python permite que generar tarjetas de pruebas 
+- **GenCard.py** es un herramienta basada en python que permite generar tarjetas de pruebas 
 **ficticias** y validadas con el algoritmo de Luhn. 
 
 ## 📰 Actualizacipones 
 
-* Setiembre 9, 2023: gencard.py v1.0 
+* 2 de setiembre , 2023: gencard.py v1.0 
 
 
 ## ⚡️ Intalación y uso
