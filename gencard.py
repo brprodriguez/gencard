@@ -48,7 +48,7 @@ if (args.m is None) or (args.c is None):
     print("python gencard.py -c 100 -m A \ngencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (100) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn \n" )
     print("python gencard.py -c 30 -m A -b 110110 \ngencard.py recibe el bin (110110) y genera (30) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn \n" )
     print("python gencard.py -c 2000 -m S \ngencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
-    print("python gencard.py -c 1500 -m A -b 110110 \ngencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
+    print("python gencard.py -c 1500 -m S -b 110110 \ngencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
     exit(1)
 
 if (not args.b is None ) and (not validar_bincode(args.b)):
