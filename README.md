@@ -31,35 +31,35 @@ Opciones:
     -m           (Obligatorio) MODO : AT -> Aleatorio Full Mutiples BIN, S -> Secuencial, A1 -> Aleatorio Simple 1 BIN 
     -c           (Obligatorio) CANT : Cantidad de tarjetas a generar 
     -b           (Opcional)    BIN : Identificador del Banco 
-    -f           (Opcional)    FILE-BANK : Nombre del archivo con información 
+    -f           (Opcional)    FILE PATH BANK : Ruta del archivo con información 
 	                        pública de Bancos. Por defecto se usa 
-				el archivo binpe.csv
+				el archivo ./binfiles/binar.csv
 ```
 
 ### Ejemplo de uso 
 1. gencard.py genera (100) tarjetas ficticias (AT)leatorias con multiples BIN del archivo binpe.csv por defecto y validadas con el algoritmo de Luhn 
 ```
-gencard.py -m AT -c 100 
+python3 gencard.py -m AT -c 100 
 ```
 2. gencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (100) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn
 ```
-gencard.py -c 100 -m A1 
+python3 gencard.py -c 100 -m A1 
 ```
 3. gencard.py recibe el bin (110110) y genera (30) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn
 ```
-gencard.py -c 30 -m A1 -b 110110 
+python3 gencard.py -c 30 -m A1 -b 110110 
 ```
-4. gencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
+4. gencard.py obtiene un bin aleatorio del archivo ./binfiles/binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
 ```
-gencard.py -c 2000 -m S 
+python3 gencard.py -c 2000 -m S 
 ```
 5. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
 ```
-gencard.py -c 1500 -m S -b 110110 
+python3 gencard.py -c 1500 -m S -b 110110 
 ```
 6. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn con file bank de Argentina (binar.csv)
 ```
-python gencard.py -c 1500 -m S -b 110110 -f ./binfiles/binar.csv
+python3 gencard.py -c 1500 -m S -b 110110 -f ./binfiles/binar.csv
 
 #Puedes usar de otros paises 
 #./binfiles/binpe.csv -> PERU
