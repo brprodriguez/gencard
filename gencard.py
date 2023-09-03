@@ -35,8 +35,6 @@ def validar_bincode(bincode):
 def validar_cantidad(valor):
     return valor.isdigit() and int(valor) > 0 
    
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
-
 parser = argparse.ArgumentParser(description="Generador de número de tarjetas ficticias y validadas con el algoritmo de Luhn")
 parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : AT -> Tarj. aleatorias con multiples BANK CODEs, A1 -> Tarj. aleatoria con 1 BANK CODE fijo, pero aleatorio, S -> Secuencial (Obligatorio)')
 parser.add_argument('-c', metavar="Cant" ,type=int,  help='CANT : Cantidad de tarjetas a generar (Obligatorio)')
