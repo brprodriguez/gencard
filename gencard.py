@@ -5,6 +5,9 @@ import csv
 import datetime
 import re
 
+MODO_ALEATORIO_FULL = 'AT'
+MODO_ALEATORIO_1BIN = 'A1'
+MODO_SECUENCIAL = 'S'
 
 fecha_actual = datetime.datetime.now()
 mes_actual = fecha_actual.month
@@ -39,7 +42,7 @@ parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : AT -> Tarj. ale
 parser.add_argument('-c', metavar="Cant" ,type=int,  help='CANT : Cantidad de tarjetas a generar (Obligatorio)')
 parser.add_argument( '-b' , metavar="Bin" ,type=str,  help='BIN : Identificador del Banco (Opcional)')
 parser.add_argument( '-nd' , metavar="NunDig" ,type=str, default='16', help='Numero de digitos : 16 caso generico para VISA u otros o 15 para casos como AMEX (Opcional)')
-parser.add_argument( '-f', metavar="File" ,type=str, default='./binfiles/binpe.csv', help='FILE-BANK : Nombre del archivo con información pública de Bancos (Opcional). Por defecto se usa el archivo binpe.csv')
+parser.add_argument( '-f', metavar="File" ,type=str, default='./binfiles/binpe.csv', help='FILE PATH BANK INFO : Nombre del archivo con información pública de Bancos (Opcional). Por defecto se usa el archivo binpe.csv')
 
 args = parser.parse_args()
     
@@ -72,7 +75,7 @@ if (args.c <= 0 ):
 modo = args.m             # (Modo)              Obligatorio
 cantidad = args.c         # (Cant)              Obligatorio
 bincode = args.b          # (Bin)               Opcional
-num_digitos = args.nd     # (Numero de digitos) Opcional, pero necesario si se usa BIN
+num_digitos = args.nd     # (Numero de digitos) Opcional, por defecto 16 
 file_bank = args.f        # (File Bank)         Opcional 
 
 
@@ -144,7 +147,7 @@ if __name__ == "__main__":
         else:
             cant_dig_retante = 10
             limite_nueves = 9999999999
-        if (modo=='S'):
+        if (modo==MODO_SECUENCIAL):
             z = 0
             for i in range(0,limite_nueves):                
                 parte2 = str(i).zfill(cant_dig_retante)
@@ -154,7 +157,7 @@ if __name__ == "__main__":
                     print( str(z) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
                     if (z==cantidad):
                         break        
-        if (modo == 'A1'):            
+        if (modo ==MODO_ALEATORIO_1BIN):            
             z = 0
             for i in range(0,limite_nueves):
                 j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero random de 10 diigitos
@@ -166,7 +169,7 @@ if __name__ == "__main__":
                     if (z==cantidad):
                         break
         w=0
-        if (modo == 'AT'):
+        if (modo == MODO_ALEATORIO_FULL):
             len_array = len(array_bin_code)
             while w < cantidad: 
                 random_bin_code_incide = random.randint(0,len_array-1)                
@@ -207,7 +210,7 @@ if __name__ == "__main__":
         else:
             cant_dig_retante = 10
             limite_nueves = 9999999999
-        if (modo =='S'):
+        if (modo ==MODO_SECUENCIAL):
             z = 0
             for i in range(0,limite_nueves):                
                 parte2 = str(i).zfill(cant_dig_retante)
@@ -217,7 +220,7 @@ if __name__ == "__main__":
                     print( str(z) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
                     if (z==cantidad):
                         break
-        if (modo == 'A1'):            
+        if (modo == MODO_ALEATORIO_1BIN):            
             z = 0
             for i in range(0,limite_nueves):
                 j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero de 10 diigitos
