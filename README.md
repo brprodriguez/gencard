@@ -3,11 +3,7 @@
 ### Overview 
 
 - **GenCard.py** es un herramienta basada en python que permite generar tarjetas de pruebas 
-**ficticias** y validadas con el algoritmo de Luhn. 
-
-### Updates
-
-* 2 de setiembre , 2023: gencard.py v1.0 
+**ficticias** y validadas con el algoritmo de Luhn.
 
 
 ### Installations
@@ -29,7 +25,7 @@ Options:
   -h, --help            show this help message and exit
 
   Mandatory:
-    -m           (Obligatorio) MODO : A -> Aleatorio, S -> Secuencial          
+    -m           (Obligatorio) MODO : A -> Aleatorio, S -> Secuencial, AF -> Aleatorio Full 
     -c           (Obligatorio) CANT : Cantidad de tarjetas a generar 
   Optional
     -b           (Opcional)    BIN : Identificador del Banco 
@@ -60,6 +56,9 @@ References
 ---------------
 - [Comprehensive Guide on Gencard.py](https://www.notfound/) by brp-rodriguez
 
+### Updates
+
+* 2 de setiembre del 2023: gencard.py v1.0
 
 #### Pull requests y nuevas funcionalidades son bienvenidas
 

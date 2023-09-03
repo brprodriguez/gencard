@@ -35,7 +35,7 @@ def validar_cantidad(valor):
 locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
 
 parser = argparse.ArgumentParser(description="Generador de número de tarjetas ficticias y validadas con el algoritmo de Luhn")
-parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : A -> Aleatorio, S -> Secuencial (Obligatorio)')
+parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : AT -> Tarj. aleatorias con multiples BANK CODEs, A1 -> Tarj. aleatoria con 1 BANK CODE fijo, pero aleatorio, S -> Secuencial (Obligatorio)')
 parser.add_argument('-c', metavar="Cant" ,type=int,  help='CANT : Cantidad de tarjetas a generar (Obligatorio)')
 parser.add_argument( '-b' , metavar="Bin" ,type=str,  help='BIN : Identificador del Banco (Opcional)')
 parser.add_argument( '-nd' , metavar="NunDig" ,type=str, default='16', help='Numero de digitos : 16 caso generico para VISA u otros o 15 para casos como AMEX (Opcional)')
@@ -60,8 +60,8 @@ if (not args.b is None ) and (not validar_bincode(args.b)):
     print("\nError!!! -> El identificador del Banco (bin) '" + str(args.b)+"' ingresado posee un formato invalido. Debe poseer 6 digitos")
     exit(1)
 
-if (not (args.m == 'A')) and (not (args.m == 'S')) and (not (args.m == 'C')) :
-    print("\nError!!! -> El modo permitido es '-m A' (A)leatorio o '-m S' (S)ecuencial o '-m C' (C)ombinado\n")
+if (not (args.m == 'A1')) and (not (args.m == 'S')) and (not (args.m == 'AT')) :
+    print("\nError!!! -> El modo permitido es '-m AT' (A)leatorio total o '-m S' (S)ecuencial o '-m A1' (A)leatorio 1 Bin\n")
     exit(1)
 
 if (args.c <= 0 ):
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     if bincode==None:
         # Leyendo el archivo por defecto binpe.csv ...
         array_bin_code = lectura_bin_from_file(file_bank)
-        random_bin_code = random.randint(0,len(array_bin_code))                
+        random_bin_code = random.randint(0,len(array_bin_code)-1)                
         parte1 = str(array_bin_code[random_bin_code][0]) # <- Generar un codigo bin  
         brand =  str(array_bin_code[random_bin_code][1])
         #AMERICAN EXPRESS
@@ -154,7 +154,7 @@ if __name__ == "__main__":
                     print( str(z) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
                     if (z==cantidad):
                         break        
-        if (modo == 'A'):            
+        if (modo == 'A1'):            
             z = 0
             for i in range(0,limite_nueves):
                 j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero random de 10 diigitos
@@ -166,7 +166,7 @@ if __name__ == "__main__":
                     if (z==cantidad):
                         break
         w=0
-        if (modo == 'C'):
+        if (modo == 'AT'):
             len_array = len(array_bin_code)
             while w < cantidad: 
                 random_bin_code_incide = random.randint(0,len_array-1)                
@@ -217,7 +217,7 @@ if __name__ == "__main__":
                     print( str(z) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
                     if (z==cantidad):
                         break
-        if (modo == 'A'):            
+        if (modo == 'A1'):            
             z = 0
             for i in range(0,limite_nueves):
                 j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero de 10 diigitos
