@@ -71,6 +71,7 @@ python gencard.py -c 1500 -m S -b 110110 -f binar.csv
 ```
 References
 ---------------
+- La información pública fue obtenida del respositorio https://github.com/iannuttall/binlist-data 
 - [Comprehensive Guide on Gencard.py](https://www.notfound/) by brp-rodriguez
 
 ### Updates
@@ -79,10 +80,14 @@ References
 
 ### No-Responsibility Disclaimer
 
-Usted es libre de utilizar este generador de tarjetas **ficticias** cualquier propósito, 
-incluido el uso privado o comercial bajo su propio riesgo. 
+GenCard.py se proporciona tal como está. El uso de esta herramienta es responsabilidad exclusiva del usuario. No se asume ninguna responsabilidad por cualquier daño, pérdida o consecuencia derivada del uso de esta herramienta.
 
-La información pública fue obtenida del respositorio https://github.com/iannuttall/binlist-data 
+Por favor, utilice esta herramienta de manera responsable en entornos de pruebas controlados con la autorización debida.
+
+Fecha de Publicación: 01 de setiembre del 2023
+
+Al utilizar esta herramienta, usted acepta automáticamente los términos de este descargo de responsabilidad.
+
 
 #### Pull requests y nuevas funcionalidades son bienvenidas
 
