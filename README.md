@@ -55,6 +55,10 @@ python3 gencard.py -c 2000 -m S
 ```
 python gencard.py -c 1500 -m S -b 110110 
 ```
+5. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn con file bank de Argentina (binar.csv)
+```
+python gencard.py -c 1500 -m S -b 110110 -f binar.csv
+```
 References
 ---------------
 - [Comprehensive Guide on Gencard.py](https://www.notfound/) by brp-rodriguez
