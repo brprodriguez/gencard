@@ -59,13 +59,13 @@ gencard.py -c 1500 -m S -b 110110
 ```
 6. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn con file bank de Argentina (binar.csv)
 ```
-python gencard.py -c 1500 -m S -b 110110 -f binar.csv
+python gencard.py -c 1500 -m S -b 110110 -f ./binfiles/binar.csv
 
 #Puedes usar de otros paises 
-#binpe.csv -> PERU
-#binch.csv -> CHILE
-#binbr.csv -> BRASIL
-#binco.csv -> COLOMBIA 
+#./binfiles/binpe.csv -> PERU
+#./binfiles/binch.csv -> CHILE
+#./binfiles/binbr.csv -> BRASIL
+#./binfiles/binco.csv -> COLOMBIA 
 
 ```
 Referencias
