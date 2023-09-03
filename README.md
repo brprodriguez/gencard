@@ -10,10 +10,14 @@
 
 Para iniciar, siga los siguientes pasos:
 
-1. **Clone el repositorio de GitHub :** use el siguiente comando the command:
+1. **Clone el repositorio de GitHub :** use el siguiente comando:
    ```
-   git clone https://github.com/brp-rodriguez/gencard.git
+   git clone https://github.com/brprodriguez/gencard.git
    ```
+1. **Simple comando :**: Genear 100 tarjetas aleatorias
+   ```
+   gencard.py -m AT -c 100 
+
 
 ### Options
 
@@ -25,9 +29,8 @@ Options:
   -h, --help            show this help message and exit
 
   Mandatory:
-    -m           (Obligatorio) MODO : A -> Aleatorio, S -> Secuencial, AF -> Aleatorio Full 
+    -m           (Obligatorio) MODO : AT -> Aleatorio Full Mutiples BIN, S -> Secuencial, A1 -> Aleatorio Simple 1 BIN 
     -c           (Obligatorio) CANT : Cantidad de tarjetas a generar 
-  Optional
     -b           (Opcional)    BIN : Identificador del Banco 
     -f           (Opcional)    FILE-BANK : Nombre del archivo con información 
 	                        pública de Bancos. Por defecto se usa 
