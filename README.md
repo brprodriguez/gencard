@@ -1,12 +1,12 @@
 # Generador de tarjetas de crédito o débito ficticias validadas por el algoritmo de Luhn
 
-### Overview 
+### Resumen 
 
 - **GenCard.py** es un herramienta basada en python que permite generar tarjetas de pruebas 
 **ficticias** y validadas con el algoritmo de Luhn.
 
 
-### Installations
+### Instalación
 
 Para iniciar, siga los siguientes pasos:
 
@@ -14,21 +14,20 @@ Para iniciar, siga los siguientes pasos:
    ```
    git clone https://github.com/brprodriguez/gencard.git
    ```
-1. **Simple comando :**: Generar 100 tarjetas aleatorias
+1. **Comando de ejemplo :**: Generar 100 tarjetas aleatorias
    ```
    gencard.py -m AT -c 100 
 	```
 
-### Options
+### Opciones
 
 ```
-Usage: gencard.py [-m|--modo] [-c|--cant] [options]
+Comando: gencard.py [-m MODO] [-c CANT] [Opciones]
 
-Options:
-  --version             show program's version number and exit
-  -h, --help            show this help message and exit
+Opciones:  
+  -h, --help            Muestra un mensaje de ayuda 
 
-  Mandatory:
+  Obligatorio:
     -m           (Obligatorio) MODO : AT -> Aleatorio Full Mutiples BIN, S -> Secuencial, A1 -> Aleatorio Simple 1 BIN 
     -c           (Obligatorio) CANT : Cantidad de tarjetas a generar 
     -b           (Opcional)    BIN : Identificador del Banco 
@@ -37,7 +36,7 @@ Options:
 				el archivo binpe.csv
 ```
 
-### Simple usage
+### Ejemplo de uso 
 1. gencard.py genera (100) tarjetas ficticias (AT)leatorias con multiples BIN del archivo binpe.csv por defecto y validadas con el algoritmo de Luhn 
 ```
 gencard.py -m AT -c 100 
@@ -69,16 +68,15 @@ python gencard.py -c 1500 -m S -b 110110 -f binar.csv
 #binco.csv -> COLOMBIA 
 
 ```
-References
+Referencias
 ---------------
 - La información pública fue obtenida del respositorio https://github.com/iannuttall/binlist-data 
-- [Comprehensive Guide on Gencard.py](https://www.notfound/) by brp-rodriguez
 
-### Updates
+### Actualizacioens 
 
 * 2 de setiembre del 2023: gencard.py v1.0
 
-### No-Responsibility Disclaimer
+### Descargo de responsabilidad
 
 GenCard.py se proporciona tal como está. El uso de esta herramienta es responsabilidad exclusiva del usuario. No se asume ninguna responsabilidad por cualquier daño, pérdida o consecuencia derivada del uso de esta herramienta.
 
@@ -89,10 +87,10 @@ Fecha de Publicación: 01 de setiembre del 2023
 Al utilizar esta herramienta, usted acepta automáticamente los términos de este descargo de responsabilidad.
 
 
-#### Pull requests y nuevas funcionalidades son bienvenidas
+#### Nuevas actualizaciones, mejoras o nuevas funcionalidades son bienvenidas
 
-License
+Licencia
 ---------------
-Copyright (C) brp-rodriguez 
+Copyright (C) brprodriguez 
 
-License: GNU General Public License, version 2
+Licencia Publica GNU, version 2

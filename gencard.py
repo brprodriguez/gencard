@@ -39,16 +39,16 @@ parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : AT -> Tarj. ale
 parser.add_argument('-c', metavar="Cant" ,type=int,  help='CANT : Cantidad de tarjetas a generar (Obligatorio)')
 parser.add_argument( '-b' , metavar="Bin" ,type=str,  help='BIN : Identificador del Banco (Opcional)')
 parser.add_argument( '-nd' , metavar="NunDig" ,type=str, default='16', help='Numero de digitos : 16 caso generico para VISA u otros o 15 para casos como AMEX (Opcional)')
-parser.add_argument( '-f', metavar="File" ,type=str, default='binpe.csv', help='FILE-BANK : Nombre del archivo con información pública de Bancos (Opcional). Por defecto se usa el archivo binpe.csv')
+parser.add_argument( '-f', metavar="File" ,type=str, default='./binfiles/binpe.csv', help='FILE-BANK : Nombre del archivo con información pública de Bancos (Opcional). Por defecto se usa el archivo binpe.csv')
 
 args = parser.parse_args()
     
 if (args.m is None) or (args.c is None):
-    print("\nError!!! -> Los siguentes parametros son obligatorios: -m/--modo, -c/--cant\n")
+    print("\nError!!! -> Los siguentes parametros son obligatorios: -m modo, -c cant\n")
     print("Ejemplos:\n")
-    print("python gencard.py -c 100 -m A \ngencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (100) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn \n" )
+    print("python gencard.py -c 100 -m A \ngencard.py obtiene un bin aleatorio del archivo /binfile/binpe.csv y genera (100) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn \n" )
     print("python gencard.py -c 30 -m A -b 110110 \ngencard.py recibe el bin (110110) y genera (30) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn \n" )
-    print("python gencard.py -c 2000 -m S \ngencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
+    print("python gencard.py -c 2000 -m S \ngencard.py obtiene un bin aleatorio del archivo /binfiles/binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
     print("python gencard.py -c 1500 -m S -b 110110 \ngencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
     exit(1)
 
