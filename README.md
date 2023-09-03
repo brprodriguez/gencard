@@ -14,7 +14,7 @@ Para iniciar, siga los siguientes pasos:
    ```
    git clone https://github.com/brprodriguez/gencard.git
    ```
-1. **Simple comando :**: Genear 100 tarjetas aleatorias
+1. **Simple comando :**: Generar 100 tarjetas aleatorias
    ```
    gencard.py -m AT -c 100 
 	```
