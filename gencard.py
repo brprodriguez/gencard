@@ -26,7 +26,7 @@ def cvv_aleatorio():
     return codigo_aleatorio
 
 def validar_bincode(bincode):    
-    patron = r'^\d{6}$'
+    patron = r'^\d{6}$' #Caso general de 6 digitos   
     return True if re.match(patron, bincode) else False    
 
 def validar_cantidad(valor):
@@ -38,6 +38,7 @@ parser = argparse.ArgumentParser(description="Generador de número de tarjetas f
 parser.add_argument('-m', metavar="Modo" ,type=str, help='MODO : A -> Aleatorio, S -> Secuencial (Obligatorio)')
 parser.add_argument('-c', metavar="Cant" ,type=int,  help='CANT : Cantidad de tarjetas a generar (Obligatorio)')
 parser.add_argument( '-b' , metavar="Bin" ,type=str,  help='BIN : Identificador del Banco (Opcional)')
+parser.add_argument( '-nd' , metavar="NunDig" ,type=str, default='16', help='Numero de digitos : 16 caso generico para VISA u otros o 15 para casos como AMEX (Opcional)')
 parser.add_argument( '-f', metavar="File" ,type=str, default='binpe.csv', help='FILE-BANK : Nombre del archivo con información pública de Bancos (Opcional). Por defecto se usa el archivo binpe.csv')
 
 args = parser.parse_args()
@@ -51,12 +52,16 @@ if (args.m is None) or (args.c is None):
     print("python gencard.py -c 1500 -m S -b 110110 \ngencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn \n" )
     exit(1)
 
+if (not args.b is None ) and (args.nd is None):
+    print("\nError!!! -> El numero de digitos (-nd) es necesaria en caso se use el identificador del Banco (bin): VISA para 16 digitos y AMEX 15 digitos")
+    exit(1)
+
 if (not args.b is None ) and (not validar_bincode(args.b)):
     print("\nError!!! -> El identificador del Banco (bin) '" + str(args.b)+"' ingresado posee un formato invalido. Debe poseer 6 digitos")
     exit(1)
 
-if (not (args.m == 'A')) and (not (args.m == 'S')) :
-    print("\nError!!! -> El modo permitido es '-m A' (A)leatorio o '-m S' (S)ecuencial\n")
+if (not (args.m == 'A')) and (not (args.m == 'S')) and (not (args.m == 'C')) :
+    print("\nError!!! -> El modo permitido es '-m A' (A)leatorio o '-m S' (S)ecuencial o '-m C' (C)ombinado\n")
     exit(1)
 
 if (args.c <= 0 ):
@@ -64,17 +69,19 @@ if (args.c <= 0 ):
     exit(1)
   
 
-modo = args.m           # (Modo)      Obligatorio
-cantidad = args.c       # (Cant)      Obligatorio
-bincode = args.b        # (Bin)       Opcional
-file_bank = args.f      # (File Bank) Opcional 
-
+modo = args.m             # (Modo)              Obligatorio
+cantidad = args.c         # (Cant)              Obligatorio
+bincode = args.b          # (Bin)               Opcional
+num_digitos = args.nd     # (Numero de digitos) Opcional, pero necesario si se usa BIN
+file_bank = args.f        # (File Bank)         Opcional 
 
 
 def lectura_bin_from_file(filename):
     with open(filename, 'r', newline='') as archivo:    
         lineas = archivo.readlines()        
-        for linea in lineas:            
+        for h,linea in enumerate(lineas):
+            if(h==0):
+                continue 
             bank_info = linea.strip().split(',')
             bincode = bank_info[0]
             brand = bank_info[1]
@@ -88,6 +95,7 @@ def lectura_bin_from_file(filename):
             telefono = bank_info[10]
             url = bank_info[11]
             array_bank_info.append(bank_info)
+            #print(bank_info)
     return array_bank_info    
 
 # Verificación de números en el PAN
@@ -121,17 +129,25 @@ def validator(ccNumber):
 array_bank_info = []
 
 if __name__ == "__main__":
-    
+    cant_dig_retante=10 #defecto
+    limite_nueves = 9999999999 #defecto
     if bincode==None:
         # Leyendo el archivo por defecto binpe.csv ...
         array_bin_code = lectura_bin_from_file(file_bank)
         random_bin_code = random.randint(0,len(array_bin_code))                
         parte1 = str(array_bin_code[random_bin_code][0]) # <- Generar un codigo bin  
-                
+        brand =  str(array_bin_code[random_bin_code][1])
+        #AMERICAN EXPRESS
+        if brand == "AMERICAN EXPRESS":        
+            cant_dig_retante = 9
+            limite_nueves = 999999999
+        else:
+            cant_dig_retante = 10
+            limite_nueves = 9999999999
         if (modo=='S'):
             z = 0
-            for i in range(0,9999999999):                
-                parte2 = str(i).zfill(10)
+            for i in range(0,limite_nueves):                
+                parte2 = str(i).zfill(cant_dig_retante)
                 tarjeta = parte1 + parte2                
                 if validator(tarjeta) == "OK":
                     z+=1 
@@ -140,21 +156,61 @@ if __name__ == "__main__":
                         break        
         if (modo == 'A'):            
             z = 0
-            for i in range(0,9999999999):
-                j = random.randint(0, 9999999999) # Caso aleatorio se escoge un numero random de 10 diigitos
-                parte2 = str(j).zfill(10)
+            for i in range(0,limite_nueves):
+                j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero random de 10 diigitos
+                parte2 = str(j).zfill(cant_dig_retante)
                 tarjeta = parte1 + parte2                
                 if validator(tarjeta) == "OK":
                     z+=1 
                     print( str(z) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
                     if (z==cantidad):
                         break
+        w=0
+        if (modo == 'C'):
+            len_array = len(array_bin_code)
+            while w < cantidad: 
+                random_bin_code_incide = random.randint(0,len_array-1)                
+                #print(str(random_bin_code_incide))
+                #print(array_bin_code[random_bin_code])
+                #print("---")
+                #print("Total " + str(len_array))
+                #print("Incide +" + str(random_bin_code_incide))
+                #print("Total " + str(len(array_bin_code)))
+                #print("Bin aleatorio" + str(array_bin_code[random_bin_code_incide]))
+                #print("" + str(random_bin_code_incide))
+                parte1 = str(array_bin_code[random_bin_code_incide][0]) # <- Generar un codigo bin  
+                #if (array_bin_code[random_bin_code][1] is None):
+                #    print("no hay")
+                brand =  str(array_bin_code[random_bin_code_incide][1])
+                
+                if brand == "AMERICAN EXPRESS":        
+                    cant_dig_retante = 9
+                    limite_nueves = 999999999
+                else:
+                    cant_dig_retante = 10
+                    limite_nueves = 9999999999            
+                j = random.randint(0, limite_nueves)
+                parte2 = str(j).zfill(cant_dig_retante)
+                tarjeta = parte1 + parte2                
+                if validator(tarjeta) == "OK":
+                    w+=1 
+                    print( str(w) + ") "+  tarjeta + ","  + fecha_expiracion_aleatorio(mes_actual,ano_actual) + "," + cvv_aleatorio())
+                    #print(brand)
+                    if (w==cantidad):
+                        break
+        
     else:
         parte1 = bincode
+        if num_digitos == '15': #America Express               
+            cant_dig_retante = 9
+            limite_nueves = 999999999
+        else:
+            cant_dig_retante = 10
+            limite_nueves = 9999999999
         if (modo =='S'):
             z = 0
-            for i in range(0,9999999999):                
-                parte2 = str(i).zfill(10)
+            for i in range(0,limite_nueves):                
+                parte2 = str(i).zfill(cant_dig_retante)
                 tarjeta = parte1 + parte2                
                 if validator(tarjeta) == "OK":
                     z+=1 
@@ -163,9 +219,9 @@ if __name__ == "__main__":
                         break
         if (modo == 'A'):            
             z = 0
-            for i in range(0,9999999999):
-                j = random.randint(0, 9999999999) # Caso aleatorio se escoge un numero de 10 diigitos
-                parte2 = str(j).zfill(10)
+            for i in range(0,limite_nueves):
+                j = random.randint(0, limite_nueves) # Caso aleatorio se escoge un numero de 10 diigitos
+                parte2 = str(j).zfill(cant_dig_retante)
                 tarjeta = parte1 + parte2                
                 if validator(tarjeta) == "OK":
                     z+=1 
