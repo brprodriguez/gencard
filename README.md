@@ -14,7 +14,7 @@ Para iniciar, siga los siguientes pasos:
    ```
    git clone https://github.com/brprodriguez/gencard.git
    ```
-1. **Comando de ejemplo :**: Generar 100 tarjetas aleatorias
+2. **Comando de ejemplo :**: Generar 100 tarjetas aleatorias
    ```
    gencard.py -m AT -c 100 
 	```
@@ -57,9 +57,9 @@ python3 gencard.py -c 2000 -m S
 ```
 python3 gencard.py -c 1500 -m S -b 110110 
 ```
-6. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn con file bank de Argentina (binar.csv)
+6. gencard.py genera 1500 tarjetas ficticias aleatorias con identificador de Argentina (binar.csv) y validadas con el algoritmo de Luhn
 ```
-python3 gencard.py -c 1500 -m S -b 110110 -f ./binfiles/binar.csv
+python3 gencard.py -c 1500 -m AT  -f ./binfiles/binar.csv
 
 #Puedes usar de otros paises 
 #./binfiles/binpe.csv -> PERU
