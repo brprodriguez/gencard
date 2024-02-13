@@ -12,7 +12,7 @@ Para iniciar, siga los siguientes pasos:
 
 1. **Clone el repositorio de GitHub :** use el siguiente comando:
    ```
-   git clone https://github.com/brprodriguez/gencard.git
+   git clone https://github.com/brprodriguez/gencard.git && cd gencard 
    ```
 2. **Comando de ejemplo :**: Generar 100 tarjetas aleatorias
    ```
