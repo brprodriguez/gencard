@@ -16,7 +16,7 @@ Para iniciar, siga los siguientes pasos:
    ```
 2. **Comando de ejemplo :**: Generar 100 tarjetas aleatorias
    ```
-   gencard.py -m AT -c 100 
+   python gencard.py -m AT -c 100 
 	```
 
 ### Opciones
