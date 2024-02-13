@@ -39,27 +39,27 @@ Opciones:
 ### Ejemplo de uso 
 1. gencard.py genera (100) tarjetas ficticias (AT)leatorias con multiples BIN del archivo binpe.csv por defecto y validadas con el algoritmo de Luhn 
 ```
-python3 gencard.py -m AT -c 100 
+python gencard.py -m AT -c 100 
 ```
 2. gencard.py obtiene un bin aleatorio del archivo binpe.csv y genera (100) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn
 ```
-python3 gencard.py -c 100 -m A1 
+python gencard.py -c 100 -m A1 
 ```
 3. gencard.py recibe el bin (110110) y genera (30) tarjetas ficticias (A)leatorias validadas con el algoritmo de Luhn
 ```
-python3 gencard.py -c 30 -m A1 -b 110110 
+python gencard.py -c 30 -m A1 -b 110110 
 ```
 4. gencard.py obtiene un bin aleatorio del archivo ./binfiles/binpe.csv y genera (2000) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
 ```
-python3 gencard.py -c 2000 -m S 
+python gencard.py -c 2000 -m S 
 ```
 5. gencard.py recibe el bin (110110) y genera (1500) tarjetas ficticias (S)ecuenciales validadas con el algoritmo de Luhn 
 ```
-python3 gencard.py -c 1500 -m S -b 110110 
+python gencard.py -c 1500 -m S -b 110110 
 ```
 6. gencard.py genera 1500 tarjetas ficticias aleatorias con identificador de Argentina (binar.csv) y validadas con el algoritmo de Luhn
 ```
-python3 gencard.py -c 1500 -m AT  -f ./binfiles/binar.csv
+python gencard.py -c 1500 -m AT  -f ./binfiles/binar.csv
 
 #Puedes usar de otros paises 
 #./binfiles/binpe.csv -> PERU
